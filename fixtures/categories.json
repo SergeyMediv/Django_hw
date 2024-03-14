@@ -1,0 +1,26 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "TV",
+      "description": "TV and accessories"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Smartphones",
+      "description": "Smartphones and accessories"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Audiotechnics",
+      "description": "Acoustic systems"
+    }
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+      "name": "Smart1",
+      "description": "Test1",
+      "image": "",
+      "category": 2,
+      "price": 19999,
+      "created_at": "2024-03-14",
+      "updated_at": "2024-03-14"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+      "name": "TV1",
+      "description": "Test2",
+      "image": "",
+      "category": 1,
+      "price": 2500,
+      "created_at": "2024-03-14",
+      "updated_at": "2024-03-14"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 13,
+    "fields": {
+      "name": "Audio1",
+      "description": "Test3",
+      "image": "",
+      "category": 3,
+      "price": 25666,
+      "created_at": "2024-03-14",
+      "updated_at": "2024-03-14"
+    }
+  }
+]
