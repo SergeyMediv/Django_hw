@@ -3,21 +3,26 @@ from django.core.management import BaseCommand
 from catalog.models import Product, Category
 import json
 
+from config.settings import BASE_DIR
+
+FIXTURES_BASE_DIR = BASE_DIR.joinpath('fixtures')
+
 
 class Command(BaseCommand):
 
+    @staticmethod
+    def _load_fixtures(fixture_file_name: str):
+        fixture_path = FIXTURES_BASE_DIR.joinpath(fixture_file_name)
+        with fixture_path.open(encoding='utf-8') as f:
+            return json.load(f)
 
     @staticmethod
     def json_load_categories():
-        with open("fixtures/categories.json", 'r', encoding='utf-8') as file:
-            content = json.load(file)
-        return content
+        return Command._load_fixtures('categories.json')
 
     @staticmethod
     def json_load_products():
-        with open("fixtures/products.json", 'r', encoding='utf-8') as file:
-            content = json.load(file)
-        return content
+        return Command._load_fixtures('products.json')
 
     def handle(self, *args, **options):
         categories_for_create = []

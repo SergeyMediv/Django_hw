@@ -1,5 +1,4 @@
 from pathlib import Path
-import psycopg2
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
