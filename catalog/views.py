@@ -30,3 +30,20 @@ def product_info(request, pk):
         'title': product.name,
     }
     return render(request, 'catalog/card.html', context)
+
+
+def category_product(request, pk):
+    category_ch = Category.objects.get(pk=pk)
+    context = {
+        'object_list': Product.objects.filter(category_id=pk),
+        'title': f'Все товары категории {category_ch.name}',
+    }
+    return render(request, 'catalog/category_product.html', context)
+
+
+def main_menu(request):
+    context = {
+        'object_list': Category.objects.all(),
+        'title': 'Каталог товаров'
+    }
+    return render(request, 'catalog/main_menu.html', context)
