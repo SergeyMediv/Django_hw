@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from catalog.models import Category, Product
 
@@ -46,4 +47,8 @@ def main_menu(request):
         'object_list': Category.objects.all(),
         'title': 'Каталог товаров'
     }
-    return render(request, 'catalog/main_menu.html', context)
+    return render(request, 'catalog/category_list.html', context)
+
+
+class CategoriesListView(ListView):
+    model = Category
