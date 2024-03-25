@@ -42,13 +42,5 @@ def category_product(request, pk):
     return render(request, 'catalog/category_product.html', context)
 
 
-def main_menu(request):
-    context = {
-        'object_list': Category.objects.all(),
-        'title': 'Каталог товаров'
-    }
-    return render(request, 'catalog/category_list.html', context)
-
-
 class CategoriesListView(ListView):
     model = Category
