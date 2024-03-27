@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from catalog.models import Category, Product
+from catalog.models import Category, Product, Blog
 
 
 def home(request):
@@ -47,3 +48,28 @@ class CategoriesListView(ListView):
     extra_context = {
         'title': 'Каталог категорий'
     }
+
+
+class BlogCreateView(CreateView):
+    model = Blog
+    fields = ('title', 'content', 'image', )
+    success_url = reverse_lazy('catalog:blog_list')
+
+
+class BlogListView(ListView):
+    model = Blog
+
+
+class BlogDetailView(DetailView):
+    model = Blog
+
+
+class BlogUpdateView(UpdateView):
+    model = Blog
+    fields = ('title', 'content', 'image', )
+    success_url = reverse_lazy('catalog:blog_list')
+
+
+class BlogDeleteView(DeleteView):
+    model = Blog
+    success_url = reverse_lazy('catalog:blog_list')
