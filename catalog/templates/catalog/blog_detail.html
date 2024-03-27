@@ -6,7 +6,7 @@
 <div class="card mb-3">
     <img src="{{ object.image | mymedia }}" class="card-img-top">
     <div class="card-header">
-        <h5>{{ object.title }}</h5>
+        <h5>{{ object.title }} ({{ object.slug }})</h5>
     </div>
 
     <div class="card-body">
@@ -17,9 +17,14 @@
             <div class="btn-group">
                 <a class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:blog_list' %}" role="button">К
                     материалам</a>
-                <a class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:blog_delete' object.pk %}" role="button">Удалить материал</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:blog_delete' object.pk %}"
+                   role="button">Удалить материал</a>
             </div>
         </div>
     </div>
+
+</div>
+<div class="footer">
+    Просмотры: {{ object.views_count }}
 </div>
 {% endblock %}
