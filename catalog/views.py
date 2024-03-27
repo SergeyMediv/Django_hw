@@ -35,13 +35,30 @@ class ProductDetailView(DetailView):
         return context
 
 
-def category_product(request, pk):
-    category_ch = Category.objects.get(pk=pk)
-    context = {
-        'object_list': Product.objects.filter(category_id=pk),
-        'title': f'Все товары категории {category_ch.name}',
-    }
-    return render(request, 'catalog/category_product.html', context)
+# def category_product(request, pk):
+#     category_ch = Category.objects.get(pk=pk)
+#     context = {
+#         'object_list': Product.objects.filter(category_id=pk),
+#         'title': f'Все товары категории {category_ch.name}',
+#     }
+#     return render(request, 'catalog/product_list.html', context)
+
+class ProductListView(ListView):
+    model = Product
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset.filter(category_id=self.kwargs.get('pk'))
+        return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+
+        category_ch = Category.objects.get(pk=self.kwargs.get('pk'))
+        context_data['category_id'] = category_ch.pk
+        context_data['title'] = f'Все товары категории - {category_ch.name}'
+
+        return context_data
 
 
 class CategoriesListView(ListView):
