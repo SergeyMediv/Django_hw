@@ -1,17 +1,21 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from pytils.translit import slugify
 
 from catalog.models import Category, Product, Blog
 
 
-def home(request):
-    context = {
-        'object_list': Product.objects.all()[:3],
+class HomeView(TemplateView):
+    template_name = 'catalog/home.html'
+    extra_context = {
         'title': 'Магазин электроники'
     }
-    return render(request, 'catalog/home.html', context)
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['object_list'] = Product.objects.all()[:3]
+        return context_data
 
 
 def contacts(request):
