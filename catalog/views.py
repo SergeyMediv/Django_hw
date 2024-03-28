@@ -18,16 +18,11 @@ class HomeView(TemplateView):
         return context_data
 
 
-def contacts(request):
-    context = {
+class ContactsView(TemplateView):
+    template_name = 'catalog/contacts.html'
+    extra_context = {
         'title': 'Контакты'
     }
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        print(f'{name}\n{phone}\n{message}')
-    return render(request, 'catalog/contacts.html', context)
 
 
 class ProductDetailView(DetailView):

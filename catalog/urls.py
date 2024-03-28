@@ -1,15 +1,15 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from catalog.views import HomeView, contacts, ProductListView, CategoriesListView, ProductDetailView, BlogCreateView, \
-    BlogListView, BlogDetailView, BlogUpdateView, BlogDeleteView
+from catalog.views import HomeView, ProductListView, CategoriesListView, ProductDetailView, BlogCreateView, \
+    BlogListView, BlogDetailView, BlogUpdateView, BlogDeleteView, ContactsView
 from catalog.apps import CatalogConfig
 
 app_name = CatalogConfig.name
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
-    path('contacts/', contacts, name='contacts'),
+    path('contacts/', ContactsView.as_view(), name='contacts'),
     path('catalog/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
     path('catalog/product_list/<int:pk>/', ProductListView.as_view(), name='product_list'),
     path('category_list', CategoriesListView.as_view(), name='category_list'),
