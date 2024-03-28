@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from catalog.views import HomeView, ProductListView, CategoriesListView, ProductDetailView, BlogCreateView, \
+from catalog.views import HomeView, CategoryDetailView, CategoriesListView, ProductDetailView, BlogCreateView, \
     BlogListView, BlogDetailView, BlogUpdateView, BlogDeleteView, ContactsView
 from catalog.apps import CatalogConfig
 
@@ -11,7 +11,7 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('contacts/', ContactsView.as_view(), name='contacts'),
     path('catalog/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
-    path('catalog/product_list/<int:pk>/', ProductListView.as_view(), name='product_list'),
+    path('category_detail/<int:pk>/', CategoryDetailView.as_view(), name='category_detail'),
     path('category_list', CategoriesListView.as_view(), name='category_list'),
     path('create/', BlogCreateView.as_view(), name='create'),
     path('blog_list/', BlogListView.as_view(), name='blog_list'),
