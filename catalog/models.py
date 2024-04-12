@@ -51,7 +51,7 @@ class Blog(models.Model):
 
 class Version(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="versions", verbose_name='Продукт')
-    version_number = models.PositiveIntegerField(verbose_name='Номер версии')
+    version_number = models.PositiveIntegerField(verbose_name='Номер версии', unique=True)
     version_name = models.CharField(max_length=100, verbose_name='Название версии')
     is_current = models.BooleanField(default=False, verbose_name='Актуальная')
 

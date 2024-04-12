@@ -1,6 +1,6 @@
 from django import forms
 
-from catalog.models import Product
+from catalog.models import Product, Version
 
 forbidden_words = ['казино',
                    'криптовалюта',
@@ -41,3 +41,9 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
                 raise forms.ValidationError('Описание не должно содержать запрещённых слов')
             else:
                 return cleaned_data
+
+
+class VersionForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Version
+        fields = '__all__'
