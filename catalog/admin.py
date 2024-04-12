@@ -2,7 +2,15 @@ from django.contrib import admin
 
 from catalog.models import Category, Product, Version
 
-admin.site.register(Version)
+
+@admin.register(Version)
+class VersionAdmin(admin.ModelAdmin):
+    list_display = (
+        "product",
+        "version_number",
+        "version_name",
+        "is_current",
+    )
 
 
 @admin.register(Category)
