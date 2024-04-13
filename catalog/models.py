@@ -51,14 +51,14 @@ class Blog(models.Model):
 
 class Version(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="versions", verbose_name='Продукт')
-    version_number = models.PositiveIntegerField(verbose_name='Номер версии')
-    version_name = models.CharField(max_length=100, verbose_name='Название версии')
+    number = models.PositiveIntegerField(verbose_name='Номер версии')
+    name = models.CharField(max_length=100, verbose_name='Название версии')
     is_current = models.BooleanField(default=False, verbose_name='Актуальная')
 
     def __str__(self):
-        return self.version_name
+        return self.name
 
     class Meta:
         verbose_name = 'Версия'
         verbose_name_plural = 'Версии'
-        ordering = ('version_number',)
+        ordering = ('number',)
