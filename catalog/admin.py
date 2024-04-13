@@ -7,8 +7,8 @@ from catalog.models import Category, Product, Version
 class VersionAdmin(admin.ModelAdmin):
     list_display = (
         "product",
-        "version_number",
-        "version_name",
+        "number",
+        "name",
         "is_current",
     )
 

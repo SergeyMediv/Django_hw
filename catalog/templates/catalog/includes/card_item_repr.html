@@ -10,7 +10,7 @@
             <p class="card-text h6" >Рабочие версии продукта:</p>
             {% for version in object.versions.all %}
                 {% if version.is_current %}
-                <p class="card-text">{{ version.version_number }} - {{ version.version_name }}</p>
+                <p class="card-text">{{ version.number }} - {{ version.name }}</p>
                 {% endif %}
             {% endfor %}
             {% endif %}
