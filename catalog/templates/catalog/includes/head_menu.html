@@ -13,5 +13,6 @@
     {% else %}
     <a class="btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a>
     <a class="btn btn-outline-primary" href="{% url 'users:login' %}">Войти</a>
+    <a class="btn btn-outline-primary" href="{% url 'users:password_reset' %}">Сброс пароля</a>
     {% endif %}
 </ul>
