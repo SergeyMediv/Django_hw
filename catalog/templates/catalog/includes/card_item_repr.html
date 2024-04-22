@@ -21,7 +21,11 @@
                 </div>
                 <div class="btn-group">
                     <a class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:product_update' object.pk %}"
-                       role="button">Редакторовать</a>
+                       role="button">Редактировать</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:product_delete' object.pk %}"
+                       role="button">Удалить</a>
                 </div>
             </div>
         </div>
