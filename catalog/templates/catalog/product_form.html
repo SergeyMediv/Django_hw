@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    {% if user == object.owner %}
+    {% if user == object.owner or user.is_superuser%}
     {% if object %}
     <div class="col-6">
         <div class="card shadow-sm">
