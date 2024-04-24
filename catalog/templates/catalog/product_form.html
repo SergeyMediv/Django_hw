@@ -20,6 +20,7 @@
             </div>
         </div>
     </div>
+    {% if user == object.owner %}
     {% if object %}
     <div class="col-6">
         <div class="card shadow-sm">
@@ -41,5 +42,6 @@
         </div>
     </div>
 </form>
+{% endif %}
 {% endif %}
 {% endblock %}
