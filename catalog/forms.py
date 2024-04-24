@@ -17,10 +17,11 @@ class StyleFormMixin:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
+            if not isinstance(field.widget, forms.CheckboxInput):
+                field.widget.attrs['class'] = 'form-control'
 
 
-class ProductForm(forms.ModelForm):
+class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'description', 'image', 'category', 'price', 'is_published']
@@ -41,7 +42,7 @@ class ProductForm(forms.ModelForm):
         return cleaned_data
 
 
-class ProductModeratorForm(forms.ModelForm):
+class ProductModeratorForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
         fields = ['description', 'category', 'is_published']
@@ -61,7 +62,7 @@ class ProductModeratorForm(forms.ModelForm):
         return cleaned_data
 
 
-class VersionForm(forms.ModelForm):
+class VersionForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Version
         fields = '__all__'
