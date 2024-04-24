@@ -19,14 +19,18 @@
                     <a class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:product_detail' object.pk %}"
                        role="button">Подробно</a>
                 </div>
+                {% if perms.catalog.can_edit_is_published and perms.catalog.can_edit_category and perms.catalog.can_edit_description or user == object.owner %}
                 <div class="btn-group">
                     <a class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:product_update' object.pk %}"
                        role="button">Редактировать</a>
                 </div>
+                {% endif %}
+                {% if user.is_superuser %}
                 <div class="btn-group">
                     <a class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:product_delete' object.pk %}"
                        role="button">Удалить</a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
