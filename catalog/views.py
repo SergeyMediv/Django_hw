@@ -7,6 +7,7 @@ from pytils.translit import slugify
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
 from catalog.models import Category, Product, Blog, Version
+from catalog.services import get_categories_from_cache
 
 
 class HomeView(TemplateView):
@@ -55,6 +56,9 @@ class CategoriesListView(ListView):
     extra_context = {
         'title': 'Каталог категорий'
     }
+
+    def get_queryset(self):
+        return get_categories_from_cache()
 
 
 class BlogCreateView(LoginRequiredMixin, CreateView):
